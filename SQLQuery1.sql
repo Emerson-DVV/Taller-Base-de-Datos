@@ -45,13 +45,57 @@ create table DOCUMENTACION (
 )
 go
 /*==============================================================*/
-/* Table: EMPLEADO                                              */
+/* Table: CASA                                             */
 /*==============================================================*/
-create table EMPLEADO (
-   COD_EMPLEADO         int                  not null identity(1,1),
-   NOMBRE_EMPLEADO      char(50)             not null,
-   DIRECCION_EMPLEADO   char(100)            not null,
-   constraint PK_EMPLEADO primary key nonclustered (COD_EMPLEADO)
+create table CASA(
+	ID_INMUEBLE int not null primary key references INMUEBLE(ID_INMUEBLE),
+	NUM_DORMITORIOS			int					not null,
+	NUM_BANIOS				int					not null,
+	SALA					bit					not null,
+	COMEDOR					bit					not null,
+	COCINA					bit					not null,
+	PATIO					bit					not null,
+	GARAJE					bit					not null,
+	NUM_PLANTAS				int					not null,
+	SUPERFICIE_CONS			float				not null,
+	ANTIGUEDAD_CONS			int					not null,
+)
+go
+/*==============================================================*/
+/* Table: DEPARTAMENTO                                          */
+/*==============================================================*/
+create table DEPARTAMENTO(
+	ID_INMUEBLE int not null primary key references INMUEBLE(ID_INMUEBLE),
+	NUM_DORMITORIOS			int					not null,
+	NUM_BANIOS				int					not null,
+	SALA					bit					not null,
+	COMEDOR					bit					not null,
+	COCINA					bit					not null,
+	SUPERFICIE				float				not null,
+	ANTIGUEDAD_CONS			int					not null,
+)
+go
+/*==============================================================*/
+/* Table: LOTE													*/
+/*==============================================================*/
+create table LOTE(
+	ID_INMUEBLE int not null primary key references INMUEBLE(ID_INMUEBLE),
+	SUPERFICIE				float				not null,
+	AGUA_POTABLE			bit					not null,
+	ELECTRICIDAD			bit					not null,
+	ALCANTARRILLADO			bit					not null,
+	TELECOMUNICACION		bit					not null,
+	DETALLE					char(40)			null,
+)
+go
+/*==============================================================*/
+/* Table: GARZONIER													*/
+/*==============================================================*/
+create table GARZONIER(
+	ID_INMUEBLE int not null primary key references INMUEBLE(ID_INMUEBLE),
+	SUPERFICIE				float				not null,
+	AMUEBLADO				bit					not null,
+	DETALLE					char(40)			null,
 )
 go
 /*==============================================================*/
@@ -61,6 +105,18 @@ create table SUCURSAL (
    COD_SUCURSAL         int                  not null identity(1,1),
    DIRECCION_SUCURSAL   char(100)            not null,
    constraint PK_SUCURSAL primary key nonclustered (COD_SUCURSAL)
+)
+go
+/*==============================================================*/
+/* Table: EMPLEADO                                              */
+/*==============================================================*/
+create table EMPLEADO (
+   COD_EMPLEADO         int                  not null identity(1,1),
+   COD_SUCURSAL			int					 not null,
+   NOMBRE_EMPLEADO      char(50)             not null,
+   DIRECCION_EMPLEADO   char(100)            not null,
+   constraint PK_EMPLEADO primary key nonclustered (COD_EMPLEADO),
+   foreign key (COD_SUCURSAL) references SUCURSAL (COD_SUCURSAL)
 )
 go
 /*==============================================================*/
@@ -123,6 +179,19 @@ create table CLIENTE (
 )
 go
 /*==============================================================*/
+/* Table: OFERTA                                                */
+/*==============================================================*/
+create table OFERTA (
+	ID_OFERTA			int					not null identity(1,1),
+	COD_EMPLEADO         int                not null,
+	FECHA_INI			datetime			not null,
+	FECHA_FIN			datetime			not null,
+	MONTO_MAX			money				not null,
+	TIPO_OFERTA			char(20)			not null,
+	constraint PK_OFERTA primary key nonclustered (ID_OFERTA),
+	foreign key (COD_EMPLEADO) references EMPLEADO (COD_EMPLEADO)
+)
+/*==============================================================*/
 /* Table: CONTRATO                                              */
 /*==============================================================*/
 create table CONTRATO (
@@ -174,11 +243,14 @@ go
 /*==============================================================*/
 create table TRANSACCION (
    COD_TRANSACCION          int                  not null,
+   ID_CONTRATO				int                  not null,
    FECHA                    datetime             not null,
    MONTO                    money                not null,
    COM_SUCUR                money                not null,
    COM_EMPLEADO             money                not null,
-   constraint PK_PRECIO primary key nonclustered (COD_TRANSACCION)
+   constraint PK_PRECIO primary key nonclustered (COD_TRANSACCION),
+   foreign key (ID_CONTRATO) references CONTRATO (ID_CONTRATO),
+
 )
 go
 
