@@ -1,14 +1,14 @@
---CREATE DATABASE INMOBILIARIA
-USE INMOBILIARIA
+--CREATE DATABASE Inm
+--USE Inm
 /*==============================================================*/
 /* Table: INMUEBLE                                              */
 /*==============================================================*/
 CREATE TABLE  INMUEBLE (
    COD_DOCUMENTACION    int                  not null,
    COD_INMUEBLE         int                  not null,
-   Superfice            float                not null,
+   SUPERFICIE           float                not null,
    COD_DIRECCION        int                  not null,
-   ESTADO				char(10)             not null,
+   ESTADO				char(30)             not null,
    DISPONIBLE           bit					 not null,
    NUM_INMUEBLE         char(50)             not null,
    COD_CATASTRAL        char(50)             not null,
@@ -20,28 +20,13 @@ CREATE TABLE  INMUEBLE (
    constraint PK_INMUEBLE primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE)
 )
 go
-/*==============================================================*/
-/* Index: POSEE___FK                                            */
-/*==============================================================*/
-create index POSEE___FK on INMUEBLE (
-COD_DIRECCION ASC
-)
-go
-
-/*==============================================================*/
-/* Index: TIENE__FK                                             */
-/*==============================================================*/
-create index TIENE__FK on INMUEBLE (
-COD_DOCUMENTACION ASC
-)
-go
 
 /*==============================================================*/
 /* Table: DIRECCION                                             */
 /*==============================================================*/
 create table DIRECCION (
    COD_DIRECCION                  int                  not null,
-   UBICACION_MAPS                 char(30)             not null,
+   UBICACION_MAPS                 char(100)             not null,
    CALLE_PRINCIPAL                char(30)             not null,
    CALLES_COLINDANTES             char(50)             not null,
    ZONA                           Char(20)             not null,
@@ -79,14 +64,7 @@ create table VIVIENDA (
    constraint PK_VIVIENDA primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_VIVIENDA)
 )
 go
-/*==============================================================*/
-/* Index: ES_UN_TIPO_DE3_FK                                     */
-/*==============================================================*/
-create index ES_UN_TIPO_DE3_FK on VIVIENDA (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
+
 /*==============================================================*/
 /* CASA                                              */
 /*==============================================================*/
@@ -105,15 +83,7 @@ create table CASA (
    constraint PK_CASA primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_VIVIENDA, COD_CASA)
 )
 go
-/*==============================================================*/
-/* Index: PUEDE_SER2_FK                                         */
-/*==============================================================*/
-create index PUEDE_SER2_FK on CASA (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC,
-COD_VIVIENDA ASC
-)
-go
+
 /*==============================================================*/
 /* DEPARTAMENTO                                            */
 /*==============================================================*/
@@ -125,20 +95,12 @@ create table DEPARTAMENTO (
    COD_DIRECCION						int                  null,
    NUM_PISO								int                  not null,
    PERMISO_MASCOTAS						bit                  not null,
-   NUM_ESTACIONAMIENTO					char                 not null,
+   NUM_ESTACIONAMIENTO					char(5)                 not null,
    DETALLE_DEPARTAMENTO					char(40)             not null,
    constraint PK_DEPARTAMENTO primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_VIVIENDA, COD_DEPARTAMENTO)
 )
 go
-/*==============================================================*/
-/* Index: PUEDE_SER_FK                                          */
-/*==============================================================*/
-create index PUEDE_SER_FK on DEPARTAMENTO (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC,
-COD_VIVIENDA ASC
-)
-go
+
 /*==============================================================*/
 /* GARZONIER                                            */
 /*==============================================================*/
@@ -153,14 +115,7 @@ create table GARZONIER (
    constraint PK_GARZONIER primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_GARZONIER)
 )
 go
-/*==============================================================*/
-/* Index: ES_UN_TIPO_DE2_FK                                     */
-/*==============================================================*/
-create index ES_UN_TIPO_DE2_FK on GARZONIER (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
+
 /*==============================================================*/
 /* LOTE                                            */
 /*==============================================================*/
@@ -175,14 +130,7 @@ create table LOTE (
    constraint PK_LOTE primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_LOTE)
 )
 go
-/*==============================================================*/
-/* Index: ES_UN_TIPO_DE_FK                                      */
-/*==============================================================*/
-create index ES_UN_TIPO_DE_FK on LOTE (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
+
 /*==============================================================*/
 /* SERVICIO_BASICO                                           */
 /*==============================================================*/
@@ -195,14 +143,7 @@ create table SERVICIO_BASICO (
    constraint PK_SERVICIO_BASICO primary key nonclustered (COD_DOCUMENTACION, COD_INMUEBLE, COD_SERV_BASC)
 )
 go
-/*==============================================================*/
-/* Index: INMB_CUENTA_CON_SERV_BASC_FK                          */
-/*==============================================================*/
-create index INMB_CUENTA_CON_SERV_BASC_FK on SERVICIO_BASICO (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
+
 /*==============================================================*/
 /* Table: EMPLEADO                                              */
 /*==============================================================*/
@@ -214,31 +155,19 @@ create table EMPLEADO (
    constraint PK_EMPLEADO primary key nonclustered (COD_EMPLEADO)
 )
 go
-/*==============================================================*/
-/* Index: TRABAJA_EN_FK                                         */
-/*==============================================================*/
-create index TRABAJA_EN_FK on EMPLEADO (
-COD_SUCURSAL ASC
-)
-go
+
 /*==============================================================*/
 /* Table: TELEFONO_EMPLEADO                                           */
 /*==============================================================*/
 create table TELEFONO_EMPLEADO (
    COD_EMPLEADO         int                  not null,
    COD_TELF_EMPL        int                  not null,
-   TELF_EMPL            char(8)              not null,
+   TELF_EMPL            char(10)              not null,
    DETALLE_TELF_EMPL    char(20)             not null,
    constraint PK_TELEFONO_EMPLEADO primary key nonclustered (COD_EMPLEADO, COD_TELF_EMPL)
 )
 go
-/*==============================================================*/
-/* Index: TIENE_FK                                              */
-/*==============================================================*/
-create index TIENE_FK on TELEFONO_EMPLEADO (
-COD_EMPLEADO ASC
-)
-go
+
 /*==============================================================*/
 /* Table: SUCURSAL                                              */
 /*==============================================================*/
@@ -254,18 +183,12 @@ go
 create table TELEFONO_SUCURSAL (
    COD_SUCURSAL         int                  not null,
    COD_TELF_SUC         int                  not null,
-   TELF_SUC             char(8)              not null,
+   TELF_SUC             char(10)              not null,
    DETALLE_TELF_SUC     char(20)             not null,
    constraint PK_TELEFONO_SUCURSAL primary key nonclustered (COD_SUCURSAL, COD_TELF_SUC)
 )
 go
-/*==============================================================*/
-/* Index: TIENEIO_FK                                            */
-/*==============================================================*/
-create index TIENEIO_FK on TELEFONO_SUCURSAL (
-COD_SUCURSAL ASC
-)
-go
+
 /*==============================================================*/
 /* Table: SALARIO                                               */
 /*==============================================================*/
@@ -278,13 +201,7 @@ create table SALARIO (
    constraint PK_SALARIO primary key nonclustered (COD_EMPLEADO, COD_SALARIO)
 )
 go
-/*==============================================================*/
-/* Index: RECIBE_FK                                             */
-/*==============================================================*/
-create index RECIBE_FK on SALARIO (
-COD_EMPLEADO ASC
-)
-go
+
 /*==============================================================*/
 /* Table: REQUERIMIENTO GENERALES                                        */
 /*==============================================================*/
@@ -303,13 +220,7 @@ create table REQUERIMIENTO_GENERAL (
    constraint PK_REQUERIMIENTO primary key nonclustered (COD_REQUERIMIENTO)
 )
 go
-/*==============================================================*/
-/* Index: REALIZA_FK                                            */
-/*==============================================================*/
-create index REALIZA_FK on REQUERIMIENTO_GENERAL (
-COD_CLIENTE ASC
-)
-go
+
 /*==============================================================*/
 /* Table: PROPIETARIO                                           */
 /*==============================================================*/
@@ -326,18 +237,12 @@ go
 create table TELEFONO_PROPIETARIO (
    COD_PROPIETARIO      int                  not null,
    COD_TELF_PR          int                  not null,
-   TELF_PR              char(8)              not null,
+   TELF_PR              char(10)              not null,
    DETALLE_TELF_PR      char(20)             not null,
    constraint PK_TELEFONO_PROPIETARIO primary key nonclustered (COD_PROPIETARIO, COD_TELF_PR)
 )
 go
-/*==============================================================*/
-/* Index: FEWA_FK                                               */
-/*==============================================================*/
-create index FEWA_FK on TELEFONO_PROPIETARIO (
-COD_PROPIETARIO ASC
-)
-go
+
 /*==============================================================*/
 /* Table: MEDIO_DE_DIFUSION                                     */
 /*==============================================================*/
@@ -345,17 +250,11 @@ create table MEDIO_DE_DIFUSION (
    COD_MD              int             not null,
    COD_OFERTA          int                  not null,
    TIPO                char(50)             not null,
-   DETALLE_MD           char(30)             null,
+   DETALLE_MD           char(50)             null,
    constraint PK_MEDIO_DE_DIFUSION primary key nonclustered (COD_MD)
 )
 go
-/*==============================================================*/
-/* Index: DIFUNDE_FK                                            */
-/*==============================================================*/
-create index DIFUNDE_FK on MEDIO_DE_DIFUSION (
-COD_OFERTA ASC
-)
-go
+
 
 /*==============================================================*/
 /* Table: TELEFONO_MEDIO_DIF                                           */
@@ -363,16 +262,9 @@ go
 create table TELEFONO_MEDIO_DIF (
    COD_MD               int             not null,
    COD_TELF_MD          int                  not null,
-   TELF_MD              char(8)              not null,
+   TELF_MD              char(10)              not null,
    DETALLE_TELF_MD      char(20)             not null,
    constraint PK_TELEFONO_MEDIO_DIF primary key nonclustered (COD_MD, COD_TELF_MD)
-)
-go
-/*==============================================================*/
-/* Index: TIENEJIUTI_FK                                         */
-/*==============================================================*/
-create index TIENEJIUTI_FK on TELEFONO_MEDIO_DIF (
-COD_MD ASC
 )
 go
 
@@ -392,18 +284,12 @@ go
 create table TELEFONO_CLIENTE (
    COD_CLIENTE          int                  not null,
    COD_TELF_CL          int                  not null,
-   TELF_CL              char(8)              not null,
+   TELF_CL              char(10)              not null,
    DETALLE_TELF_CL       char(20)           not null,
    constraint PK_TELEFONO_CLIENTE primary key nonclustered (COD_CLIENTE, COD_TELF_CL)
 )
 go
-/*==============================================================*/
-/* Index: CUENTA_CON_FK                                         */
-/*==============================================================*/
-create index CUENTA_CON_FK on TELEFONO_CLIENTE (
-COD_CLIENTE ASC
-)
-go
+
 
 /*==============================================================*/
 /* Table: CONTRATO                                              */
@@ -419,13 +305,7 @@ create table CONTRATO (
    constraint PK_CONTRATO primary key nonclustered (COD_CONTRATO)
 )
 go
-/*==============================================================*/
-/* Index: GENERA__FK                                            */
-/*==============================================================*/
-create index GENERA__FK on CONTRATO (
-COD_OFERTA ASC
-)
-go
+
 /*==============================================================*/
 /* Table: VIDEO                                    */
 /*==============================================================*/
@@ -437,13 +317,7 @@ create table VIDEO (
    constraint PK_VIDEO primary key nonclustered (COD_VIDEO)
 )
 go
-/*==============================================================*/
-/* Index: TIEFEA_FK                                             */
-/*==============================================================*/
-create index TIEFEA_FK on VIDEO (
-COD_OFERTA ASC
-)
-go
+
 /*==============================================================*/
 /* Table: FOTO                                    */
 /*==============================================================*/
@@ -455,13 +329,7 @@ create table FOTO (
    constraint PK_FOTO primary key nonclustered (COD_FOTO)
 )
 go
-/*==============================================================*/
-/* Index: POSEEHTR_FK                                           */
-/*==============================================================*/
-create index POSEEHTR_FK on FOTO (
-COD_OFERTA ASC
-)
-go
+
 /*==============================================================*/
 /* Table: PRECIO                                                */
 /*==============================================================*/
@@ -473,13 +341,7 @@ create table PRECIO (
    constraint PK_PRECIO primary key nonclustered (COD_OFERTA, COD_PRECIO)
 )
 go
-/*==============================================================*/
-/* Index: TIENE___FK                                            */
-/*==============================================================*/
-create index TIENE___FK on PRECIO (
-COD_OFERTA ASC
-)
-go
+
 /*==============================================================*/
 /* Table: TRANSACCION                                              */
 /*==============================================================*/
@@ -494,21 +356,6 @@ create table TRANSACCION (
    constraint PK_TRANSACCION primary key nonclustered (COD_TRANSACCION)
 )
 go
-/*==============================================================*/
-/* Index: OBTIENE_FK                                            */
-/*==============================================================*/
-create index OBTIENE_FK on TRANSACCION (
-COD_SUCURSAL ASC
-)
-go
-
-/*==============================================================*/
-/* Index: GENERA____FK                                          */
-/*==============================================================*/
-create index GENERA____FK on TRANSACCION (
-COD_CONTRATO ASC
-)
-go
 
 /*==============================================================*/
 /* REQUERIMIENTO_CUANTITATIVO                                           */
@@ -516,19 +363,13 @@ go
 create table REQUERIMIENTO_CUANTITATIVO (
    COD_REQUERIMIENTO    int						not null,
    COD_REQ_CUANT        int						not null,
-   REQUERIMIENTO        char(20)                not null,
+   REQUERIMIENTO        char(30)                not null,
    CANTIDAD_MIN         int                     not null,
    CANTIDAD_MAX         int                     not null,
    constraint PK_REQUERIMIENTO_CUANTITATIVO primary key nonclustered (COD_REQUERIMIENTO, COD_REQ_CUANT)
 )
 go
-/*==============================================================*/
-/* Index: CONFORMADO_POR_FK                                     */
-/*==============================================================*/
-create index CONFORMADO_POR_FK on REQUERIMIENTO_CUANTITATIVO (
-COD_REQUERIMIENTO ASC
-)
-go
+
 /*==============================================================*/
 /* REQUERIMIENTO_CUALITATIVO                                           */
 /*==============================================================*/
@@ -540,13 +381,7 @@ create table REQUERIMIENTO_CUALITATIVO (
    constraint PK_REQUERIMIENTO_CUALITATIVO primary key nonclustered (COD_REQUERIMIENTO, COD_REQ_CUALIT)
 )
 go
-/*==============================================================*/
-/* Index: CONDORMADO_POR_FK                                     */
-/*==============================================================*/
-create index CONDORMADO_POR_FK on REQUERIMIENTO_CUALITATIVO (
-COD_REQUERIMIENTO ASC
-)
-go
+
 
 /*==============================================================*/
 /* POSEE                                           */
@@ -561,22 +396,7 @@ create table POSEE (
    constraint PK_POSEE primary key (COD_POSEE)
 )
 go
-/*==============================================================*/
-/* Index: PROPIETARIO_POSEE_FK                                  */
-/*==============================================================*/
-create index PROPIETARIO_POSEE_FK on POSEE (
-COD_PROPIETARIO ASC
-)
-go
 
-/*==============================================================*/
-/* Index: INMUEBLE_ESTA_FK                                      */
-/*==============================================================*/
-create index INMUEBLE_ESTA_FK on POSEE (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
 /*==============================================================*/
 /* OFERTA                                           */
 /*==============================================================*/
@@ -591,22 +411,7 @@ create table OFERTA (
    constraint PK_OFERTA primary key (COD_OFERTA)
 )
 go
-/*==============================================================*/
-/* Index: CREA_FK                                               */
-/*==============================================================*/
-create index CREA_FK on OFERTA (
-COD_EMPLEADO ASC
-)
-go
 
-/*==============================================================*/
-/* Index: FORMA_PARTE__FK                                       */
-/*==============================================================*/
-create index FORMA_PARTE__FK on OFERTA (
-COD_DOCUMENTACION ASC,
-COD_INMUEBLE ASC
-)
-go
 /*==============================================================*/
 /* COINCIDENCIA                                           */
 /*==============================================================*/
@@ -617,20 +422,6 @@ create table COINCIDENCIA (
    COINCIDENCIAS						int                     not null,
    FECHA_COINCIDENCIA					datetime                not null,
    constraint PK_COINCIDENCIA primary key  (COD_COINCIDENCIA)
-)
-go
-/*==============================================================*/
-/* Index: REQ_BUSCA_FK                                          */
-/*==============================================================*/
-create index REQ_BUSCA_FK on COINCIDENCIA (
-COD_REQUERIMIENTO ASC
-)
-go
-/*==============================================================*/
-/* Index: OFERTA_COINCIDE_CON_FK                                */
-/*==============================================================*/
-create index OFERTA_COINCIDE_CON_FK on COINCIDENCIA (
-COD_OFERTA ASC
 )
 go
 
