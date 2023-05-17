@@ -6,7 +6,7 @@ USE INMOBILIARIA
 CREATE TABLE  INMUEBLE (
    COD_DOCUMENTACION    int                  not null,
    COD_INMUEBLE         int                  not null,
-   superfice            float                not null,
+   Superfice            float                not null,
    COD_DIRECCION        int                  not null,
    ESTADO				char(10)             not null,
    DISPONIBLE           bit					 not null,
@@ -72,8 +72,6 @@ create table VIVIENDA (
    COD_VIVIENDA         int                  not null,
    COD_DIRECCION        int                  null,
    NUM_DORMITORIOS      int                  not null,
-   COM_SUCUR            int                  not null,
-   COM_EMPLEADO         int                  not null,
    NUM_BAÑOS            int                  not null,
    SALA                 bit                  not null,
    COMEDOR              bit                  not null,
@@ -344,7 +342,7 @@ go
 /* Table: MEDIO_DE_DIFUSION                                     */
 /*==============================================================*/
 create table MEDIO_DE_DIFUSION (
-   COD_MD              char(10)             not null,
+   COD_MD              int             not null,
    COD_OFERTA          int                  not null,
    TIPO                char(50)             not null,
    DETALLE_MD           char(30)             null,
@@ -363,7 +361,7 @@ go
 /* Table: TELEFONO_MEDIO_DIF                                           */
 /*==============================================================*/
 create table TELEFONO_MEDIO_DIF (
-   COD_MD               char(10)             not null,
+   COD_MD               int             not null,
    COD_TELF_MD          int                  not null,
    TELF_MD              char(8)              not null,
    DETALLE_TELF_MD      char(20)             not null,
@@ -587,7 +585,6 @@ create table OFERTA (
    COD_EMPLEADO         int						not null,
    COD_DOCUMENTACION    int						not null,
    COD_INMUEBLE         int						not null,
-   MONTO_OFERTA         money                   not null,
    FECHA_INI_OFERTA     datetime                not null,
    FECHA_FIN_OFERTA     datetime                not null,
    TIPO_OFERTA          char(20)                not null,         
