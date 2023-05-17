@@ -1,11 +1,12 @@
 --CREATE DATABASE INMOBILIARIA
---USE INMOBILIARIA
+USE INMOBILIARIA
 /*==============================================================*/
 /* Table: INMUEBLE                                              */
 /*==============================================================*/
 CREATE TABLE  INMUEBLE (
    COD_DOCUMENTACION    int                  not null,
    COD_INMUEBLE         int                  not null,
+   superfice            float                not null,
    COD_DIRECCION        int                  not null,
    ESTADO				char(10)             not null,
    DISPONIBLE           bit					 not null,
