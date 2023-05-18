@@ -2,14 +2,14 @@
 /* DBMS name:      Microsoft SQL Server 2008                    */
 /* Created on:     17/5/2023 23:53:56                           */
 /*==============================================================*/
-<<<<<<< HEAD
+
 --CREATE DATABASE Inmueble
 --USE Inmueble
-=======
+
 --create database Inmobiliaria
 --use Inmobiliaria
 
->>>>>>> 426af6975119f1630146f21bb9de694a931d0de1
+
 
 /*==============================================================*/
 /* Table: BUSQUEDA                                              */
@@ -80,11 +80,9 @@ create table FOTO (
    COD_FOTO             int                  not null,
    COD_OFERTA           int                  not null,
    IMAGEN               char(30)                null,
-<<<<<<< HEAD
-   DETALLE_FOTO         char(30)             null,
-=======
+
    DETALLE_FOTO         char(20)             null,
->>>>>>> 426af6975119f1630146f21bb9de694a931d0de1
+
    constraint PK_FOTO primary key nonclustered (COD_FOTO)
 )
 go
