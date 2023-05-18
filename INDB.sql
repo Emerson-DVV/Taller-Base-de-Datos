@@ -2,7 +2,8 @@
 /* DBMS name:      Microsoft SQL Server 2008                    */
 /* Created on:     17/5/2023 23:53:56                           */
 /*==============================================================*/
-
+--CREATE DATABASE Inmueble
+--USE Inmueble
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -658,9 +659,9 @@ create table DIRECCION (
    COD_DIRECCION        int                  not null,
    ZONA                 char(10)             not null,
    UBICACION_MAPS       char(100)            not null,
-   CALLE_PRINCIPAL      char(20)             not null,
-   CALLE_COLINDANTE     char(30)             null,
-   DETALLE_DIR          char(20)             null,
+   CALLE_PRINCIPAL      char(100)             not null,
+   CALLE_COLINDANTE     char(100)             null,
+   DETALLE_DIR          char(50)             null,
    constraint PK_DIRECCION primary key nonclustered (COD_DIRECCION)
 )
 go
@@ -696,8 +697,8 @@ go
 create table FOTO (
    COD_FOTO             int                  not null,
    COD_OFERTA           int                  not null,
-   IMAGEN               image                null,
-   DETALLE_FOTO         char(20)             null,
+   IMAGEN               char(30)                null,
+   DETALLE_FOTO         char(30)             null,
    constraint PK_FOTO primary key nonclustered (COD_FOTO)
 )
 go
@@ -784,7 +785,7 @@ go
 /* Table: MEDIO_DE_DIFUSION                                     */
 /*==============================================================*/
 create table MEDIO_DE_DIFUSION (
-   COD_MD               char(10)             not null,
+   COD_MD               int             not null,
    COD_OFERTA           int                  not null,
    TIPO                 char(15)             not null,
    DETALLE_MD           char(30)             null,
@@ -979,9 +980,9 @@ go
 /* Table: TELEFONO_MEDIO_DIF                                    */
 /*==============================================================*/
 create table TELEFONO_MEDIO_DIF (
-   COD_MD               char(10)             not null,
+   COD_MD               int             not null,
    COD_TELF_MD          int                  not null,
-   TELF_MD              char(8)              not null,
+   TELF_MD              char(9)              not null,
    DETALLE_TELF_MD      char(20)             null,
    constraint PK_TELEFONO_MEDIO_DIF primary key nonclustered (COD_MD, COD_TELF_MD)
 )

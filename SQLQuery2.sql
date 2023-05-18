@@ -1,26 +1,28 @@
+
 --llenado de dirreccion
-INSERT INTO DIRECCION (COD_DIRECCION, UBICACION_MAPS, CALLE_PRINCIPAL, CALLES_COLINDANTES, ZONA, REFERENCIA)
+
+INSERT INTO DIRECCION (COD_DIRECCION, ZONA, UBICACION_MAPS, CALLE_PRINCIPAL, CALLE_COLINDANTE, DETALLE_DIR )
 VALUES
-(1, 'https://maps.app.goo.gl/kDgPeEasdMNppgLs8', 'Av. Circunvalacion', 'Rene Fernandez-Maria Quiroga Vargas', 'Noreste', 'Frente al cajero'),
-(2, 'https://maps.app.goo.gl/4aU4D6cyDoNfEeVk8', 'R. Bustamante', 'Jose Pol-Carlos la Torre', 'Central', 'Dos arboles Santa Rita'),
-(3, 'https://maps.app.goo.gl/qieRrsFRGtdvgsCf7', 'Av. 16 de Julio', 'Callejon', 'Noroeste', 'Rejas negras'),
-(4, 'https://maps.app.goo.gl/DZY7vurrUeRhHVZj9', 'A. Villavicencio-Av. Beiging', 'Los Cedros-Jacinto Anaya', 'Noroeste', 'Frente al parque'),
-(5, 'https://maps.app.goo.gl/YtkpfRQPbQxSWymn7', 'Av. Litoral-Sarmiento', 'Melcho Perez de Olguin- C.G. Gamarra', 'Norte', 'Arbusto pequeño'),
-(6, 'https://maps.app.goo.gl/C3LKqEcDG7t6gTcA7', 'av. Capitan Victor Ustariz', 'rejas con Planta Santa rita', 'Noroeste', 'Frente a la cancha'),
-(7, 'https://maps.app.goo.gl/EbHUvLwDXaWtpkiq7', 'Av. 9 de Abril', 'Los Cedros-Jacinto Anaya', 'Norte', 'Arbusto pequeño'),
-(8, 'https://maps.app.goo.gl/1jRz6i2wAPnhXxiy7', 'Av. Reducto', 'J. Castillo-J. Calderon', 'Este', 'Calle de piedra'),
-(9, 'https://maps.app.goo.gl/B1z1RpSSXHt6FmvX9', 'Av. Reducto', 'Los Cedros-Jacinto Anaya', 'Este', 'Frente a la cancha'),
-(10, 'https://maps.app.goo.gl/oMyrLLqcRKEw3BZG7', 'Av. Circunvalacion', 'J. Castillo-J. Calderon', 'Sur', 'Techo de tejas rojas'),
-(11, 'https://maps.app.goo.gl/Cesn2xBSQNujJuqs6', 'Mariano Melgarejo', 'Luis Castel Quiroga-Heroes de Boqueron', 'Central', 'Techo de tejas rojas'),
-(12, 'https://maps.app.goo.gl/jCgLR4NkwY7rjVyM9', 'Martin Cardenas', 'Punata-Honduras', 'Sur', 'Calle de piedra'),
-(13, 'https://maps.app.goo.gl/W5SnfqUGELb72hL3A', 'Abel Rivas', 'Punata-Honduras', 'Central', 'Calle de piedra'),
-(14, 'https://maps.google.com/?cid=4894438051817710370&entry=gps', 'Av. dorgbiny', 'N. Rios-M.Padilla', 'Central', 'Frente a la cancha'),
-(15, 'https://maps.app.goo.gl/JjYHMhV42c9VyjC49', 'Papa Alejandro VI', 'Av. Petrolera', 'Sur', 'Frente a la cancha'),
-(16, 'https://maps.app.goo.gl/moHuM9u72Uu4shFMA', 'Grover Suarez', 'Calle Villar-SipeSipe', 'Este', 'Parque del arquitecto'),
-(17, 'https://maps.app.goo.gl/RHUJRsAsL8mXcyzb6', 'Papa Alejandro VI', 'Punata-Honduras', 'Este', 'Frente a segip'),
-(18, 'https://goo.gl/maps/2zoCxyugMwv426hM8', 'Av. dorgbiny', 'J. Arauco', 'Este', 'Frente al mercado'),
-(19, 'https://maps.app.goo.gl/9ByyYgxfSWrKTfVg6', 'Grover Suarez', 'D. Camacho-J. Chavez', 'Este', 'Frente al mercado'),
-(20, 'https://maps.app.goo.gl/htWhw4zdbeFUyt8j8', 'Grover Suarez', 'Calle Secundaria 31, Calle Secundaria 31', 'Central', 'Cerca la gutyfood');
+(1, 'Noreste','https://maps.app.goo.gl/kDgPeEasdMNppgLs8', 'Av. Circunvalacion', 'Rene Fernandez-Maria Quiroga Vargas',  'Frente al cajero'),
+(2, 'Centro','https://maps.app.goo.gl/4aU4D6cyDoNfEeVk8', 'R. Bustamante', 'Jose Pol-Carlos la Torre',  'Dos arboles Santa Rita'),
+(3, 'oeste','https://maps.app.goo.gl/qieRrsFRGtdvgsCf7', 'Av. 16 de Julio', 'Callejon',  'Rejas negras'),
+(4,  'Noroeste','https://maps.app.goo.gl/DZY7vurrUeRhHVZj9', 'A. Villavicencio-Av. Beiging', 'Los Cedros-Jacinto Anaya', 'Frente al parque'),
+(5, 'Norte', 'https://maps.app.goo.gl/YtkpfRQPbQxSWymn7', 'Av. Litoral-Sarmiento', 'Melcho Perez de Olguin- C.G. Gamarra', 'Arbusto pequeño'),
+(6,  'oeste','https://maps.app.goo.gl/C3LKqEcDG7t6gTcA7', 'av. Capitan Victor Ustariz', 'rejas con Planta Santa rita', 'Frente a la cancha'),
+(7,  'Norte','https://maps.app.goo.gl/EbHUvLwDXaWtpkiq7', 'Av. 9 de Abril', 'Los Cedros-Jacinto Anaya', 'Arbusto pequeño'),
+(8, 'Este', 'https://maps.app.goo.gl/1jRz6i2wAPnhXxiy7', 'Av. Reducto', 'J. Castillo-J. Calderon', 'Calle de piedra'),
+(9,  'Este','https://maps.app.goo.gl/B1z1RpSSXHt6FmvX9', 'Av. Reducto', 'Los Cedros-Jacinto Anaya', 'Frente a la cancha'),
+(10, 'Sur', 'https://maps.app.goo.gl/oMyrLLqcRKEw3BZG7', 'Av. Circunvalacion', 'J. Castillo-J. Calderon', 'Techo de tejas rojas'),
+(11, 'Central','https://maps.app.goo.gl/Cesn2xBSQNujJuqs6', 'Mariano Melgarejo', 'Luis Castel Quiroga-Heroes de Boqueron',  'Techo de tejas rojas'),
+(12, 'Sur','https://maps.app.goo.gl/jCgLR4NkwY7rjVyM9', 'Martin Cardenas', 'Punata-Honduras',  'Calle de piedra'),
+(13,'Centro',  'https://maps.app.goo.gl/W5SnfqUGELb72hL3A', 'Abel Rivas', 'Punata-Honduras', 'Calle de piedra'),
+(14, 'Centro', 'https://maps.google.com/?cid=4894438051817710370&entry=gps', 'Av. dorgbiny', 'N. Rios-M.Padilla', 'Frente a la cancha'),
+(15, 'Sur','https://maps.app.goo.gl/JjYHMhV42c9VyjC49', 'Papa Alejandro VI', 'Av. Petrolera',  'Frente a la cancha'),
+(16, 'Este', 'https://maps.app.goo.gl/moHuM9u72Uu4shFMA', 'Grover Suarez', 'Calle Villar-SipeSipe', 'Parque del arquitecto'),
+(17, 'Este','https://maps.app.goo.gl/RHUJRsAsL8mXcyzb6', 'Papa Alejandro VI', 'Punata-Honduras',  'Frente a segip'),
+(18, 'Este', 'https://goo.gl/maps/2zoCxyugMwv426hM8', 'Av. dorgbiny', 'J. Arauco', 'Frente al mercado'),
+(19, 'Este','https://maps.app.goo.gl/9ByyYgxfSWrKTfVg6', 'Grover Suarez', 'D. Camacho-J. Chavez',  'Frente al mercado'),
+(20,  'Centro','https://maps.app.goo.gl/htWhw4zdbeFUyt8j8', 'Grover Suarez', 'D. Camacho-J. Chavez', 'Cerca la gutyfood');
 --llenado de documentacion
 INSERT INTO DOCUMENTACION (COD_DOCUMENTACION, ESCRITURA_COMPRA_VENTA, CERTIFICADO_ALODIAL, CERTIFICADO_CATASTRO, PLANO_USO_SUELO, COMPROBANTE_PAGO_IMPUESTO_ANUAL, DETALLE_LOG)
 VALUES
