@@ -24,28 +24,28 @@ VALUES
 (19, 'Este','https://maps.app.goo.gl/9ByyYgxfSWrKTfVg6', 'Grover Suarez', 'D. Camacho-J. Chavez',  'Frente al mercado'),
 (20,  'Centro','https://maps.app.goo.gl/htWhw4zdbeFUyt8j8', 'Grover Suarez', 'D. Camacho-J. Chavez', 'Cerca la gutyfood');
 --llenado de documentacion
-INSERT INTO DOCUMENTACION (COD_DOCUMENTACION, ESCRITURA_COMPRA_VENTA, CERTIFICADO_ALODIAL, CERTIFICADO_CATASTRO, PLANO_USO_SUELO, COMPROBANTE_PAGO_IMPUESTO_ANUAL, DETALLE_LOG)
+INSERT INTO DOCUMENTACION (COD_DOCUMENTACION, CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA, DETALLE_DOC)
 VALUES
-(1, 1, 1, 1, 1, 1, ''),
-(2, 1, 0, 1, 0, 1, 'zona rural'),
-(3, 1, 1, 0, 1, 0, 'zona rural'),
-(4, 0, 1, 1, 1, 1, 'zona rural'),
-(5, 1, 1, 1, 0, 1, 'zona centrica'),
-(6, 1, 0, 0, 1, 0, 'zona centrica'),
-(7, 0, 1, 0, 0, 1, 'zona centrica'),
-(8, 1, 1, 1, 1, 1, 'zona centrica'),
-(9, 0, 0, 1, 1, 0, 'zona centrica'),
-(10, 1, 1, 0, 0, 1, 'zona centrica'),
-(11, 1, 0, 1, 1, 1, 'zona centrica'),
-(12, 0, 1, 1, 1, 0, 'zona centrica'),
-(13, 1, 1, 0, 1, 1, 'zona rural'),
-(14, 0, 1, 1, 0, 1, 'zona rural'),
-(15, 1, 0, 0, 1, 0, 'zona rural'),
-(16, 1, 1, 1, 1, 1, 'zona rural'),
-(17, 0, 0, 1, 1, 0, 'zona rural'),
-(18, 1, 1, 0, 0, 1, 'zona rural'),
-(19, 1, 0, 1, 1, 1, 'zona centrica'),
-(20, 0, 1, 1, 1, 0, 'zona centrica');
+(1, 1, 1, 1, 1, 'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(2, 1, 0, 1, 0,'CERTF_DE_GRAVAMENES, CERTIFICADO_NO_ADEUDO_DE_IMPUEST'),
+(3, 1, 1, 0, 1,'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO, MINUTA_COMPRA_VENTA'),
+(4, 0, 1, 1, 1,' PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(5, 1, 1, 1, 0,'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST'),
+(6, 1, 0, 0, 1,'CERTF_DE_GRAVAMENES, MINUTA_COMPRA_VENTA'),
+(7, 0, 1, 0, 0,' PLANO_USO_SUELO'),
+(8, 1, 1, 1, 1,'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(9, 0, 0, 1, 1,'CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(10, 1, 1, 0, 0,'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO'),
+(11, 1, 0, 1, 1,'CERTF_DE_GRAVAMENES,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(12, 0, 1, 1, 1, ' PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(13, 1, 1, 0, 1,'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO, MINUTA_COMPRA_VENTA'),
+(14, 0, 1, 1, 0, ' PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST'),
+(15, 1, 0, 0, 1, 'CERTF_DE_GRAVAMENES, MINUTA_COMPRA_VENTA'),
+(16, 1, 1, 1, 1, 'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(17, 0, 0, 1, 1,'CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(18, 1, 1, 0, 0, 'CERTF_DE_GRAVAMENES, PLANO_USO_SUELO,'),
+(19, 1, 0, 1, 1, 'CERTF_DE_GRAVAMENES,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA'),
+(20, 0, 1, 1, 1, ' PLANO_USO_SUELO,CERTIFICADO_NO_ADEUDO_DE_IMPUEST, MINUTA_COMPRA_VENTA');
 /*==============================================================*/
 /* Llenado de la tabla inmueble                                       */
 /*==============================================================*/
