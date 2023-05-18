@@ -3,8 +3,8 @@
 /* Created on:     17/5/2023 23:53:56                           */
 /*==============================================================*/
 
---CREATE DATABASE Inmueble
---USE Inmueble
+--CREATE DATABASE INM
+--USE INM
 
 --create database Inmobiliaria
 --use Inmobiliaria
@@ -68,7 +68,7 @@ go
 create table EMPLEADO (
    COD_EMPLEADO         int                  not null,
    NOMBRE_EMPL          char(20)             not null,
-   DIRECCION_EMPL       char(30)             not null,
+   DIRECCION_EMPL       char(50)             not null,
    constraint PK_EMPLEADO primary key nonclustered (COD_EMPLEADO)
 )
 go
@@ -188,7 +188,7 @@ create table MEDIO_DE_DIFUSION (
    COD_MD               int             not null,
    COD_OFERTA           int                  not null,
    TIPO                 char(15)             not null,
-   DETALLE_MD           char(30)             null,
+   DETALLE_MD           char(50)             null,
    constraint PK_MEDIO_DE_DIFUSION primary key nonclustered (COD_MD)
 )
 go
@@ -200,7 +200,6 @@ go
 create table OFERTA (
    COD_OFERTA           int                  not null,
    COD_EMPLEADO         int                  not null,
-   COD_DOCUMENTACION    int                  not null,
    COD_INMUEBLE         int                  not null,
    FECHA_INI_OFERTA     datetime             not null,
    FECHA_FIN_OFERTA     datetime             not null,
@@ -214,7 +213,6 @@ go
 /*==============================================================*/
 create table POSEE (
    COD_POSEE            int                  not null,
-   COD_DOCUMENTACION    int                  not null,
    COD_INMUEBLE         int                  not null,
    COD_PROPIETARIO      int                  not null,
    FECHA_REGISTRO       datetime             not null,
@@ -341,7 +339,7 @@ create table VIDEO (
    COD_VIDEO            int                  not null,
    COD_OFERTA           int                  not null,
    VIDEO                char(30)             null,
-   DETALLE_VIDEO        char(20)             null,
+   DETALLE_VIDEO        char(50)             null,
    constraint PK_VIDEO primary key nonclustered (COD_VIDEO)
 )
 go
